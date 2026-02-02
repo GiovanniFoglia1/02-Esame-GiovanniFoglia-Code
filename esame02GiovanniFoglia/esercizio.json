@@ -1,0 +1,122 @@
+{
+  "chisiamo": {
+    "titolo": "Chi Siamo",
+    "testo": "Ciao, sono [Tuo Nome], un web designer freelance appassionato di estetica digitale e funzionalità.\nAiuto aziende, professionisti e creativi a trasformare le loro idee in esperienze online uniche,\nprogettando siti web moderni, intuitivi e curati nei dettagli.\nPer me il design non è solo questione di grafica: è comunicazione visiva, è trovare il giusto\nequilibrio tra bellezza e usabilità. Ogni progetto nasce dall’ascolto delle esigenze del cliente e\nsi sviluppa con un approccio personalizzato, fatto di ricerca, creatività e attenzione alle ultime\ntendenze del web.",
+    "titolo2": "I Nostri servizi",
+    "titolo3": "Testimonianze"
+  },
+  "menu": [
+    {
+      "nome": "Chi Siamo",
+      "link": "chisiamo.php"
+    },
+    {
+      "nome": "Portfolio",
+      "link": "portfolio.php"
+    },
+    {
+      "nome": "Contatti",
+      "link": "form.php"
+    }
+  ],
+  "footer": {
+    "testo": "© 2024 Leafdesign. Tutti i diritti riservati."
+  },
+  "testimonianze": [
+    {
+      "testo": "Grazie al sito che ha realizzato per noi, siamo riusciti a raggiungere nuovi clienti in pochissimo tempo!",
+      "autore": "Marco R.",
+      "ruolo": "Imprenditore"
+    },
+    {
+      "testo": "Professionalità, creatività e disponibilità: il risultato è stato superiore alle aspettative.",
+      "autore": "Giulia B.",
+      "ruolo": "Consulente Marketing"
+    },
+    {
+      "testo": "Finalmente un sito moderno, veloce e facile da usare. I nostri utenti ci fanno i complimenti ogni giorno.",
+      "autore": "Andrea T.",
+      "ruolo": "E-commerce Manager"
+    },
+    {
+      "testo": "Ha saputo trasformare la nostra identità in un design unico e riconoscibile. Consigliatissimo!",
+      "autore": "Laura M.",
+      "ruolo": "Designer di interni"
+    },
+    {
+      "testo": "Seguendo passo passo il progetto, ha reso tutto semplice anche per chi non è pratico di tecnologia.",
+      "autore": "Paolo C.",
+      "ruolo": "Artigiano"
+    }
+  ],
+  "titlepage": {
+    "titolo1": "Contattaci",
+    "titolo2": "Titolo progetto",
+    "titolo3": "portfolio"
+  },
+  "servizi": [
+    {
+      "nome": "Consulenza personalizzata"
+    },
+    {
+      "nome": "Sviluppo software"
+    },
+    {
+      "nome": "Supporto tecnico"
+    }
+  ],
+  "info-footer": [
+    {
+      "nome": "Indirizzo",
+      "valore": "Via Roma 123, Milano, Italia"
+    },
+    {
+      "nome": "Telefono",
+      "valore": "+39 02 12345678"
+    },
+    {
+      "nome": "Email",
+      "valore": "info@leafdesign.it"
+    }
+  ],
+  "social": [
+    {
+      "nome": "Facebook",
+      "link": "https://www.facebook.com/leafdesign"
+    },
+    {
+      "nome": "Twitter",
+      "link": "https://www.twitter.com/leafdesign"
+    },
+    {
+      "nome": "LinkedIn",
+      "link": "https://www.linkedin.com/company/leafdesign"
+    },
+    {
+      "nome": "Instagram",
+      "link": "https://www.instagram.com/leafdesign"
+    }
+  ],
+   "paragrafi-card": [
+    {
+      "testo": "Progettazione e sviluppo di siti web moderni, responsive e ottimizzati per i motori di ricerca."
+    },
+    {
+      "testo": "Creazione di identità visive uniche, loghi e materiali di branding per aziende e professionisti."
+    },
+    {
+      "testo": "Sviluppo di applicazioni web personalizzate per migliorare l'efficienza e l'esperienza utente."
+    },
+    {
+      "testo": "Consulenza strategica per la presenza online, marketing digitale e ottimizzazione delle conversioni."
+    },
+    {
+      "testo": "Supporto tecnico continuo e manutenzione per garantire che il tuo sito web sia sempre aggiornato e sicuro."
+    },
+    {
+      "testo": "Creazione di contenuti multimediali, tra cui fotografie, video e grafica, per arricchire la tua presenza online."
+    }
+  ]
+}
+ 
+

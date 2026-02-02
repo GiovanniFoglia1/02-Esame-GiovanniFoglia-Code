@@ -1,0 +1,220 @@
+@import './mixin_file/mixin';
+@import './mixin_file/hamburger';
+@import './mixin_file/variables';
+@import './mixin_file/mixinprogetto';
+@include h1-project;
+@include cointaner-project;
+
+     img {
+         position: relative;
+         width: 70%;
+         height: 75%;
+         margin-top: 0;
+         margin-left: 50px;
+         border-radius: 20px;
+         image-rendering: auto;
+
+ }
+
+ .image {
+     height: 100%;
+     width: 100%;
+
+ }
+
+ .desc-work {
+     margin-top: 5%;
+     margin-right: 20px;
+     background: rgba(255, 255, 255, 0.15);
+     border-radius: 20px;
+     backdrop-filter: blur(10px);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     position: relative;
+     z-index: 2;
+     width: 70%;
+     height: 75%;
+
+ }
+
+ .desc {
+     position: relative;
+     line-height: normal;
+     text-align: center;
+     top: 100px;
+     font-weight: bold;
+
+
+ }
+
+ /* Formattazione tablet*/
+ @include formatSite(mobile);
+ @include formatSite(tablet);
+
+ 
+ @media (min-width:600px) and (max-width:1023px) {
+
+ @include h1-project;
+ @include cointaner-project;
+ @include hamburger-menu();
+
+     * {
+         letter-spacing: 2px;
+     }
+
+         .image {
+         width: 100%;
+         height: 400px;
+
+     }
+
+    .container img {
+         position: relative;
+         width: 90%;
+         height: 70%;
+         margin-top: 50px;
+         margin-left: 30px;
+         border-radius: 20px;
+         image-rendering: auto;
+         top: 50px;
+     }
+     
+
+footer {
+    @include footer-style;
+     }
+
+     footer {
+        @include footer-style;
+    }
+
+    .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+
+    .footer-content {
+        @include footer-content;
+
+        ul {
+            @include ul;
+
+            li {
+                @include li;
+
+                a {
+                    @include a;
+
+                    &:hover {
+                        @include a-hover;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    footer p {
+    @include footer-p;
+    
+    }
+
+ }
+
+ /* Formattazione smartphone*/
+ @media (max-width: 599px) {
+
+     @include h1-project;
+     @include hamburger-menu();
+     @include cointaner-project();
+
+     .container {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+
+     img {
+             position: relative;
+             margin-top: 25px;
+             margin-left: 15%;
+             width: 350px;
+             border-radius: 20px;
+             image-rendering: auto;
+             top:100px;
+ }
+
+}
+
+     .image {
+         height: 100%;
+         width: 400px;
+         position: relative;
+         bottom: 60px;
+         margin: 0;
+}
+
+ footer {
+    @include footer-style;
+     }
+
+     footer {
+        @include footer-style;
+    }
+
+    .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+
+    .footer-content {
+        @include footer-content;
+
+        ul {
+            @include ul;
+
+            li {
+                @include li;
+
+                a {
+                    @include a;
+
+                    &:hover {
+                        @include a-hover;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    footer p {
+    @include footer-p;
+    
+    }
+     
+}

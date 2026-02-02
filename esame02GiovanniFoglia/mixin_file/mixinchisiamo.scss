@@ -1,0 +1,172 @@
+@import 'variables';
+
+
+
+%title-chisiamo {
+     font-size: 3rem;
+     font-weight: 800;
+     margin-bottom: 30px;
+     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+     position: relative;
+     z-index: 2;
+     text-align: center;
+
+}
+
+
+ %text-chisiamo {
+     font-size: 1.1rem;
+     line-height: 1.9;
+     margin-bottom: 35px;
+     background: rgba(255, 255, 255, 0.15);
+     padding: 30px;
+     font-weight: 600;
+     letter-spacing: 1px;
+     border-radius: 20px;
+     backdrop-filter: blur(10px);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     position: relative;
+     z-index: 2
+ }
+
+
+
+%blockquote {
+  background: rgba(255, 255, 255, 0.2);
+     backdrop-filter: blur(15px);
+     padding: 30px;
+     margin: 0;
+     text-align: center;
+     letter-spacing: 1px;
+     font-weight: 600;
+     border-radius: 20px;
+     border: 2px solid rgba(255, 255, 255, 0.3);
+     transition: all 0.4s ease;
+     position: relative;
+     opacity: 0;
+     animation: slideInUp 0.8s ease forwards;
+}
+
+
+%service {
+  list-style: none;
+     padding: 0;
+     position: relative;
+     z-index: 2;
+     margin-bottom: 20px;
+
+     li {
+         background: rgba(255, 255, 255, 0.2);
+         backdrop-filter: blur(15px);
+         padding: 20px 30px;
+         margin: 20px 0;
+         border-radius: 15px;
+         font-weight: 600;
+         letter-spacing: 1px;
+         border: 2px solid rgba(255, 255, 255, 0.3);
+         transition: all 0.4s ease;
+         position: relative;
+         text-align: center;
+         width: 40%;
+         left: 30%;
+
+         &:hover {
+             background: rgba(255, 255, 255, 0.3);
+             transform: translateY(-5px) scale(1.02);
+             /* stile hover */
+             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+
+
+         }
+     }
+}
+
+@mixin slider-layout($slide-width) {
+
+  .position-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+  }
+
+  .slider {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+
+
+  }
+
+  .image-carousel {
+    display: flex;
+    width: $slide-width * 3;
+    height: 400px;
+    position: relative;
+    transition: left 2s;
+
+  }
+
+  .slider-image {
+    width: 600px;
+    height: 400px;
+  }
+
+}
+
+@mixin manual-button {
+  .button-slider {
+     position: relative;
+     top: -20px;
+     display: flex;
+     justify-content: center;
+}
+
+ .manual-btn {
+     display: inline-block;
+     height: 10px;
+     width: 10px;
+     border-radius: 5px;
+     background-color: $color-page;
+     margin-bottom: 40px;
+     margin-right: 10px;
+     margin-left: 10px;
+ }
+}
+
+
+@mixin formatSite($device) {
+  @if $device==mobile {
+    @media (max-width: 599px) {
+      .hamburger-menu ul {
+        width: 250px;
+      }
+
+
+      .slider {
+        width: 400px;
+        right: 90px;
+      }
+
+      }
+  }
+
+
+  @else if $device==tablet {
+    @media (min-width: 600px) and (max-width: 1024px) {
+      .hamburger-menu ul {
+        width: 400px;
+      }
+
+    
+      .slider {
+        width: 600px;
+        right: 122px
+      }
+
+    }
+  } @else {
+    @error "Device non supportato";
+  }
+
+}

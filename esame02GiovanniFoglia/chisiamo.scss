@@ -1,0 +1,241 @@
+ @import './mixin_file/mixin.scss';
+ @import './mixin_file/hamburger';
+ @import './mixin_file/variables';
+ @import './mixin_file/mixinchisiamo';
+
+
+@include slider-targets(0px, 800px);
+@include manual-button();
+
+ .content {
+     width: 100%;
+     height: 100%;
+ }
+
+
+ .position-slider {
+     width: 100%;
+     height: 100%;
+ }
+
+.slider {
+     width: 800px;
+     height: 400px;
+     overflow: hidden;
+     margin-left: 25%;
+     margin-top: 10%;
+     margin-bottom: 5%;
+     margin-right: 30%;
+}
+
+
+ .image-carousel {
+     display: flex;
+     width: 2400px;
+     height: 400px;
+     clear: both;
+     position: relative;
+     transition: left 2s;
+ }
+
+
+ .slider-image {
+     width: 800px;
+     height: 400px;
+ }
+
+
+ /* stile presentazione sito */
+ .content {
+     background: $background-gradient;
+     color: $color-page;
+     border-radius: 25px;
+     box-shadow: 0 25px 60px rgba(102, 126, 234, 0.4);
+     position: relative;
+     overflow: hidden;
+}
+ 
+ @keyframes move {
+     0% {
+         transform: translate(0, 0);
+     }
+
+     100% {
+         transform: translate(160px, 160px);
+     }
+ }
+
+ h2 {
+    @extend %title-chisiamo;
+}
+
+ .chi-siamo {
+     @extend %text-chisiamo;
+ }
+
+
+ .servizi {
+    @extend %service;
+ }
+
+ .testimonials {
+     display: flex;
+     gap: 20px;
+     flex-direction: column;
+ }
+
+
+ blockquote {
+     @extend %blockquote;
+}
+
+ blockquote:nth-child(1) {
+     @include incrementa-animation-delay(0.1s);
+}
+
+ @keyframes slideInUp {
+     from {
+         opacity: 0;
+         transform: translateY(30px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ @include formatSite(mobile);
+ @include formatSite(tablet);
+
+
+ /* Formattazione tablet*/
+
+ @media (min-width:600px) and (max-width:1023px) {
+
+     @include hamburger-menu();
+     @include slider-layout(600px);
+     @include slider-targets(0, 600px);
+     @include manual-button();
+     
+
+     .position-slider {
+         width: 100%;
+         height: 100%;
+ }
+
+    .content {
+         margin-top: 100px;
+     }
+
+
+     footer {
+         @include footer-style;
+     }
+
+     .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+
+    .footer-content {
+    @include footer-content;
+
+    ul {
+        @include ul;
+
+        li {
+            @include li;
+
+            a {
+                @include a;
+
+                &:hover {
+                    @include a-hover;
+                }
+            }
+        }
+    }
+}
+    footer p {
+        @include footer-p;
+    }
+}
+
+
+
+
+ /* Formattazione smartphone*/
+
+ @media (max-width: 599px) {
+
+     @include hamburger-menu();
+     @include slider-layout(700px);
+     @include slider-targets(0, 700px);
+     @include manual-button();
+     
+
+.position-slider {
+         width: 100%;
+         height: 100%;
+     }
+
+    footer {
+    @include footer-style;
+     }
+
+    .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+
+    .footer-content {
+        @include footer-content;
+
+        ul {
+            @include ul;
+
+            li {
+                @include li;
+
+                a {
+                    @include a;
+
+                    &:hover {
+                        @include a-hover;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+ 
+
+    footer p {
+        @include footer-p;
+    }
+}

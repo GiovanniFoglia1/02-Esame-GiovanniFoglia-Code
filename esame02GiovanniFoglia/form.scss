@@ -1,0 +1,280 @@
+ @import './mixin_file/variables';
+ @import './mixin_file/mixinform';
+ @import './mixin_file/mixin';
+ @import './mixin_file/hamburger';
+
+ @include animation-form;
+ @include messagge-div;
+ @include form-background;
+ @include textarea-device;
+ @include form-input;
+ @include pin-map;
+ @include display-form-desktop;
+ 
+
+
+ .contattaci {
+     /* immagine con span*/
+     width: 500px;
+     height: 300px;
+     position: relative;
+     margin-top: 100px;
+
+ }
+
+ .background-form {
+     height: 1200px;
+ }
+
+ label {
+     font-size: 1rem;
+     font-weight: 800;
+     color: $color-page;
+     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+ 
+ 
+
+.contattaci img {
+     /* immagine con span*/
+     width: 1600px;
+     height: 400px;
+     filter: opacity(40%);
+ }
+
+
+ .contattaci>span {
+     @include span-form;
+     left: 550px;
+ }
+
+
+
+ .contact {
+     @include contact-device;
+ }
+
+ .message {
+    display: flex;
+    flex-direction: row;
+    bottom:0;
+}
+
+ #message {
+    width: 577px;
+ }
+    
+
+ iframe {
+        @include iframe-desktop;
+    }
+
+
+
+ button[type=submit] {
+     @include button-type('submit');
+     @include style-button;
+
+
+ }
+
+ button[type=reset] {
+     @include button-type('reset');
+     @include style-button;
+
+ }
+
+
+ button[type="submit"]:hover {
+     background-color: hover-bg(submit);
+ }
+
+ button[type="reset"]:hover {
+     background-color: hover-bg(reset);
+ }
+
+ .addr-pin {
+    padding-left: 45px;
+    left: 10%;
+    bottom: 50px;
+    top: -50px;
+
+    &::before {
+        left: 20px;
+    }
+}
+
+@include formatSite(mobile);
+@include formatSite(tablet);
+
+
+ @media (min-width:600px) and (max-width:1023px) {
+     
+    @include hamburger-menu();
+    @include display-form;
+    @include textarea-device;
+    @include form-input;
+    @include pin-map;
+    @include form-background;
+    @include messagge-div;
+
+    .contattaci>span {
+        @include span-form;
+     }
+
+
+
+    .contact {
+         @include contact-device;
+     }
+
+    iframe {
+        @include iframe-device;
+     }
+
+     button[type=submit] {
+         @include button-type('submit');
+         @include style-button;
+     }
+
+     button[type=reset] {
+         @include button-type('reset');
+         @include style-button;
+     }
+
+     button[type="submit"]:hover {
+         background-color: hover-bg(submit);
+     }
+
+     button[type="reset"]:hover {
+         background-color: hover-bg(reset);
+     }
+
+    /* Stile footer con gradient*/
+     footer {
+        @include footer-style;
+    }
+
+    .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+    .footer-content {
+        @include footer-content;
+        ul {
+            @include ul;
+        li {
+             @include li;
+             a {
+                 @include a;
+                     &:hover {
+                        @include a-hover;
+                    }
+                }
+            }
+        }
+    }
+
+    footer p {
+        @include footer-p;
+    }
+    
+}
+
+ /* Formattazione smartphone*/
+ @media (max-width: 599px) {
+
+ @include hamburger-menu();
+ @include display-form;
+ @include textarea-device;
+ @include form-input;
+ @include pin-map;
+ @include form-background;
+ @include messagge-div;
+
+    .contattaci>span {
+    @include span-form;
+}
+
+     
+
+     #name,#surname, #email,#phone {
+         width: 450px;
+     }
+
+     .contact {
+         @include contact-device;
+     }
+
+
+     iframe {
+         @include iframe-device;
+     }
+
+     button[type=submit] {
+         @include button-type('submit');
+         @include style-button;
+     }
+
+     button[type=reset] {
+         @include button-type('reset');
+         @include style-button;
+     }
+
+     button[type="submit"]:hover {
+         background-color: hover-bg(submit);
+     }
+
+     button[type="reset"]:hover {
+         background-color: hover-bg(reset);
+     }
+
+    footer {
+        @include footer-style;
+    }
+
+    .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+
+    .footer-content {
+        @include footer-content;
+        ul {
+            @include ul;
+            li {
+                @include li;
+                a {
+                    @include a;
+                    &:hover {
+                        @include a-hover;
+                    }
+                }
+            }
+        }
+    }
+
+    footer p {
+    @include footer-p;
+    }
+}

@@ -1,0 +1,136 @@
+ @import './mixin_file/mixin';
+ @import './mixin_file/variables';
+
+* {
+    @extend %format-page;
+}
+
+ /* menù header stile gradient */
+ nav {
+     background: $gradient;
+     padding: 10px;
+     display: flex;
+     justify-content: center;
+     height: 100px;
+     align-items: center;
+     position: fixed;
+     width: 99%;
+     z-index: 1000;
+     top: 0;
+     bottom: 0;
+     gap: 20px;
+
+        ul {
+         display: flex;
+         gap: 50px;
+         margin: 0;
+         padding: 0;
+         list-style: none;
+
+         li {
+             width: 150px;
+             height: 60px;
+             line-height: 60px;
+             border-radius: 50px;
+             background: rgba(255, 255, 255, 0.2);
+             backdrop-filter: blur(10px);
+             text-align: center;
+             border: 1px solid rgba(255, 255, 255, 0.3);
+             transition: all 0.3s ease;
+
+             a {
+                 color: $color-page;
+                 line-height: 60px;
+                 text-decoration: none;
+                 font-weight: 600;
+                 display: block;
+                 text-align: center;
+                 font-family: $family-geneva;
+             }
+
+                &:hover {
+                 background: calcolohover(rgba(150, 146, 146, 0.3), 20%);
+                 transform: translateY(-3px);
+
+             }
+         }
+     }
+
+ }
+
+
+ nav #checkbox-label {
+     opacity: 0;
+ }
+
+
+ html,
+ body {
+     height: 100%;
+     width: 100%;
+     overflow-x: hidden;
+    }
+
+
+ footer {
+    @include footer-style;
+     }
+
+    .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+
+    .footer-content {
+        @include footer-content;
+
+        ul {
+            @include ul;
+
+            li {
+                @include li;
+
+                a {
+                    @include a;
+
+                    &:hover {
+                        @include a-hover;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+ footer p {
+        @include footer-p;
+    }
+
+
+ .logo {
+     width: CalcoloLogo(header);
+     background-color: $color-page;
+     border-radius: 100%;
+     position: relative;
+     right: 100px;
+ }
+
+ .logo-footer {
+     width: CalcoloLogo(footer);
+     background-color: $color-page;
+     border-radius: 50%;
+     margin-bottom: 20px;
+ }

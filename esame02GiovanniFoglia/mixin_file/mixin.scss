@@ -1,0 +1,147 @@
+@import 'variables';
+
+@function CalcoloLogo($logo) {
+
+  $valore1: 180px;
+  $valore2: 100px;
+
+
+  @if $logo==footer {
+    @return $valore1;
+  }
+
+  @else if $logo==header {
+    @return $valore1 - $valore2;
+
+  }
+
+  @else {
+    @error "errore nel calcolo del logo";
+  }
+
+}
+
+
+@mixin footer-style {
+  background: $gradient;
+  color: white;
+  padding: 40px 20px;
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+@function calcolohover($color, $amount) {
+  @return lighten($color, $amount);
+}
+
+@mixin effetto-hover($color, $amount) {
+  &:hover {
+    background-color: calcolohover($color, $amount);
+  }
+}
+
+$i:1;
+
+@mixin incrementa-animation-delay($start-delay) {
+  $second-animation: $start-delay;
+
+  @for $i from 1 through 5 {
+    blockquote:nth-child(#{$i}) {
+      animation-delay: $second-animation;
+    }
+
+    $second-animation: $second-animation+0.1s;
+  }
+}
+
+%format-page {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@mixin slider-targets($start-left, $step) {
+  $contatore-slider: $start-left;
+
+  @for $i from 1 through 3 {
+    #slider#{$i}:target~.image-carousel {
+      left: $contatore-slider;
+    }
+
+    $contatore-slider: $contatore-slider - $step;
+  }
+}
+
+
+
+@mixin info-footer {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px 30px;
+  min-width: 250px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+@mixin hover-footer {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px);
+}
+
+@mixin title-footer {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@mixin footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 50px;
+}
+
+@mixin ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@mixin li {
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+}
+
+@mixin a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+@mixin a-hover {
+  color: #ffd369;
+}
+
+@mixin footer-p {
+  margin-top: 30px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  opacity: 0.9;
+
+}

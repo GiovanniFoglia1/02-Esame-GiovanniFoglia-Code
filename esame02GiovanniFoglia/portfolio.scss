@@ -1,0 +1,201 @@
+ @import './mixin_file/mixin';
+ @import './mixin_file/hamburger';
+ @import './mixin_file/variables';
+ @import './mixin_file/mixinportfolio';
+
+@include image-portfolio;
+@include content-portfolio-desktop;
+@include portfolio-background;
+
+.background-portfolio {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title-page {
+    position: relative;
+    left: 40%;
+}
+  
+  h3 {
+      text-align: center;
+      color: $color-page;
+  }
+
+  @include animation-card-rotate;
+  @include formatSite(mobile);
+  @include formatSite(tablet);
+
+  /* Formattazione tablet*/
+@media (min-width:600px) and (max-width:1023px) {
+      @include hamburger-menu();
+      @include content-portfolio;
+      @include portfolio-background;
+      @include image-portfolio;
+      @include animation-card-rotate;
+      
+        @keyframes fadeSlideIn {
+          from {
+              opacity: 0;
+              transform: translateX(-100px);
+          }
+
+          to {
+              opacity: 1;
+              transform: translateX(0);
+          }
+      }
+
+     
+
+      /* Codice animazione 3d rotazione*/
+
+
+  h3 {
+      text-align: center;
+  }
+
+
+footer {
+    @include footer-style;
+     }
+
+     footer {
+        @include footer-style;
+    }
+
+    .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+
+    .footer-content {
+        @include footer-content;
+
+        ul {
+            @include ul;
+
+            li {
+                @include li;
+
+                a {
+                    @include a;
+
+                    &:hover {
+                        @include a-hover;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    footer p {
+    @include footer-p;
+    
+    }
+
+}
+
+  /* Formattazione smartphone*/
+  @media (max-width: 599px) {
+
+    @include hamburger-menu();
+    @include content-portfolio;
+    @include portfolio-background;
+    @include image-portfolio;
+    @include animation-card-rotate;
+
+    @keyframes fadeSlideIn {
+          from {
+              opacity: 0;
+              transform: translateX(-100px);
+          }
+
+          to {
+              opacity: 1;
+              transform: translateX(0);
+          }
+      }
+      
+
+      a {
+          font-size: 1rem;
+          font-weight: 800;
+          color: $color-page;
+          text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+      }
+
+    
+
+      h3 {
+          text-align: center;
+      }
+
+
+     footer {
+    @include footer-style;
+     }
+
+     
+
+    .info-section,
+    .social-section {
+        @include info-footer;
+    }
+
+    .info-section:hover,
+    .social-section:hover {
+        @include hover-footer;
+    }
+
+    .title {
+        @include title-footer;
+
+    }
+
+    .footer-content {
+        @include footer-content;
+
+        ul {
+            @include ul;
+
+            li {
+                @include li;
+
+                a {
+                    @include a;
+
+                    &:hover {
+                        @include a-hover;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    footer p {
+    @include footer-p;
+    
+    }
+
+
+  }
