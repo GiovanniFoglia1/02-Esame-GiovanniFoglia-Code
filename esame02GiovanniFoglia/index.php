@@ -8,8 +8,8 @@ $dati = json_decode(file_get_contents('esercizio.json'), true);
 ?>
   <meta charset="UTF-8">
   <title>Leafdesign</title>
-  <link rel="stylesheet" href="../css/file.min.css" type="text/css">
-  <link rel="stylesheet" href="../css/chisiamo.min.css" type="text/css">
+  <link rel="stylesheet" href="./css/file.min.css" type="text/css">
+  <link rel="stylesheet" href="./css/chisiamo.min.css" type="text/css">
   <link rel="icon" href="./leafdesign.png" type="image/x-icon">
 
   
