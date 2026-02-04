@@ -8,7 +8,7 @@
   "menu": [
     {
       "nome": "Chi Siamo",
-      "link": "chisiamo.php"
+      "link": "index.php"
     },
     {
       "nome": "Portfolio",
