@@ -2,17 +2,16 @@
 @import './mixin_file/hamburger';
 @import './mixin_file/variables';
 @import './mixin_file/mixinprogetto';
-@include h1-project;
 @include cointaner-project;
 
-     img {
+     .container img {
          position: relative;
          width: 70%;
          height: 75%;
-         margin-top: 0;
-         margin-left: 50px;
          border-radius: 20px;
          image-rendering: auto;
+         top: 15%;
+         left:10%;
 
  }
 
@@ -23,8 +22,6 @@
  }
 
  .desc-work {
-     margin-top: 5%;
-     margin-right: 20px;
      background: rgba(255, 255, 255, 0.15);
      border-radius: 20px;
      backdrop-filter: blur(10px);
@@ -32,7 +29,8 @@
      position: relative;
      z-index: 2;
      width: 70%;
-     height: 75%;
+     height: 50%;
+     top:25%;
 
  }
 
@@ -45,6 +43,7 @@
 
 
  }
+ 
 
  /* Formattazione tablet*/
  @include formatSite(mobile);
@@ -53,7 +52,6 @@
  
  @media (min-width:600px) and (max-width:1023px) {
 
- @include h1-project;
  @include cointaner-project;
  @include hamburger-menu();
 
@@ -71,11 +69,9 @@
          position: relative;
          width: 90%;
          height: 70%;
-         margin-top: 50px;
-         margin-left: 30px;
          border-radius: 20px;
          image-rendering: auto;
-         top: 50px;
+         top:25%;
      }
      
 
@@ -136,7 +132,6 @@ footer {
  /* Formattazione smartphone*/
  @media (max-width: 599px) {
 
-     @include h1-project;
      @include hamburger-menu();
      @include cointaner-project();
 
@@ -147,12 +142,11 @@ footer {
 
      img {
              position: relative;
-             margin-top: 25px;
-             margin-left: 15%;
              width: 350px;
              border-radius: 20px;
              image-rendering: auto;
              top:100px;
+             left: 80px;
  }
 
 }

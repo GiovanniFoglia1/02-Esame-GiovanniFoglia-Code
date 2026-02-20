@@ -8,8 +8,8 @@ $dati = json_decode(file_get_contents('esercizio.json'), true);
 ?>
   <meta charset="UTF-8">
   <title>Leafdesign</title>
-  <link rel="stylesheet" href="./css/file.min.css" type="text/css">
-  <link rel="stylesheet" href="./css/chisiamo.min.css" type="text/css">
+  <link rel="stylesheet" href="../css/file.min.css" type="text/css">
+  <link rel="stylesheet" href="../css/chisiamo.min.css" type="text/css">
   <link rel="icon" href="./leafdesign.png" type="image/x-icon">
 
   
@@ -17,22 +17,13 @@ $dati = json_decode(file_get_contents('esercizio.json'), true);
 
 <body>
 <header>
-  <nav class="hamburger-menu">
-    <!--HEADER-->
-    <input type="checkbox" id="checkbox-label">
-    <label for="checkbox-label" class="checkbox-controllo">
-    <span class="span-hamburger"></span>
-    </label>
-    <img src="./immagini/leafdesign.png" class="logo" alt="Leaf Design logo">
-   
-    <ul id="menu">
-      <?php foreach($dati['menu'] as $item): ?>
-      <li><a href="<?php echo $item['link']; ?>" ><?php echo $item['nome']; ?></a></li>
-      <?php endforeach; ?>
-    </ul>
-    
+ <?php require_once 'layout.php';
 
-  </header>
+renderHeader(
+  $dati['menu'],
+  'Home'
+);
+?>
 
   <main> <!--SLIDER IMMAGINI-->
    
@@ -84,30 +75,12 @@ $dati = json_decode(file_get_contents('esercizio.json'), true);
 
   </main>
 
-  <footer> <!--FOOTER-->
-    <div class="footer-content">
-      <img src="./immagini/leafdesign.png" class="logo-footer" alt="Leaf Design logo">
-
-      <div class="info-section">
-        <h3 class="title">Contatti</h3>
-        <ul class="info">
-          <?php foreach($dati['info-footer'] as $contatto): ?>
-          <li><?php echo $contatto['nome']; ?>: <?php echo $contatto['valore']; ?></li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
-
-      <div class="social-section">
-        <h3 class="title">Social</h3>
-        <ul class="social">
-          <?php foreach($dati['social'] as $social): ?>
-          <li><a href="<?php echo $social['link']; ?>" target="_blank"><?php echo $social['nome']; ?></a></li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
-    </div>
-    <p>&copy; <?php echo $dati['footer']['testo']; ?></p>
-  </footer>
-
+  <?php
+renderFooter(
+  $dati['info-footer'],
+  $dati['social'],
+  $dati['footer']['testo']
+);
+?>
 </body>
 </html>

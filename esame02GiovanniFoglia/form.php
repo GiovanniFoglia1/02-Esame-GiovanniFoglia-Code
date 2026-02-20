@@ -1,71 +1,61 @@
 
 <?php
-$dati = json_decode(file_get_contents('esercizio.json'), true);
+$valori = [
+    'nomi' => '',
+    'cognome' => '',
+    'email' => '',
+    'telefono' => '',
+    'messaggio' => ''
+];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $nome = $_POST["nome"];
-  $cognome = $_POST["cognome"];
-  $email = $_POST["e-mail"];
-  $telefono = $_POST["telefono"];
-  $messaggio = $_POST["messaggio"];
+$errori = [];
 
-  $errori = [];
-
-
-if (empty($nome) || empty($cognome) || empty($email) || empty($telefono) || empty($messaggio)) {
-    $errori[] = "<p>Riempire i campi mancanti.</p>";
-    
-  }
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errori[] = "<p>formato mail invalido.</p>";
-    
-  }
-
-if (!preg_match("/^[0-9]{10,15}$/", $telefono)) {
-    $errori[] = "<p>Numero di telefono invalido.</p>";
-  }
-
-if (strlen($messaggio) > 500) {
-    $errori[] = "<p>Messaggio troppo lungo. Limite di 500 caratteri.</p>";
-    
-  }
-
-if (strlen($nome) > 50 || strlen($cognome) > 50 || strlen ($nome . $cognome) < 3) {
-    $errori[] = "<p>Nome e cognome non devono superare i 50 caratteri e devono essere almeno 3 caratteri complessivi.</p>";
-    
-  }
-
-  
-
-
-   if (!empty($errori)) {
-        foreach ($errori as $errore) {
-            echo "<p>$errore</p>";
-        }
-        exit;
-    };
+function erroreCampo($campo, $errori) {
+    return isset($errori[$campo]) ? 'campo-errore' : '';
 }
 
-$file="contatti.txt";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-  
-    if (isset($nome) && isset($cognome) && isset($email) && isset($telefono) && isset($messaggio)){
-       $str = "Nome: $nome, Cognome: $cognome, Email: $email, Telefono: $telefono, Messaggio: $messaggio\n";
-       $rit = file_put_contents($file,$str, FILE_APPEND | LOCK_EX);
+    $valori['nomi'] = trim($_POST['nomi'] ?? '');
+    $valori['cognome'] = trim($_POST['cognome'] ?? '');
+    $valori['email'] = trim($_POST['e-mail'] ?? '');
+    $valori['telefono'] = trim($_POST['telefono'] ?? '');
+    $valori['messaggio'] = trim($_POST['messaggio'] ?? '');
 
-       if ($rit !== false) {
-        echo "modulo salvato correttamente";
-      }
-    else {
-        echo "errore scrittura del file";
+    if ($valori['nomi'] === '' || strlen($valori['nomi']) > 50) {
+        $errori['nomi'] = 'Nome non valido';
     }
 
-} else {
-        echo "validazione fallita";
+    if ($valori['cognome'] === '' || strlen($valori['cognome']) > 50) {
+        $errori['cognome'] = 'Cognome non valido';
     }
 
+    if (!filter_var($valori['email'], FILTER_VALIDATE_EMAIL)) {
+        $errori['email'] = 'Email non valida';
+    }
+
+    if (!preg_match('/^[0-9]{10,15}$/', $valori['telefono'])) {
+        $errori['telefono'] = 'Telefono non valido';
+    }
+
+    if ($valori['messaggio'] === '' || strlen($valori['messaggio']) > 500) {
+        $errori['messaggio'] = 'Messaggio non valido';
+    }
+
+    if (empty($errori)) {
+        $file = "contatti.txt";
+        $str = "Nome: {$valori['nomi']}, Cognome: {$valori['cognome']}, Email: {$valori['email']}, Telefono: {$valori['telefono']}, Messaggio: {$valori['messaggio']}\n";
+        file_put_contents($file, $str, FILE_APPEND | LOCK_EX);
+        echo "<p class='success'>Modulo inviato correttamente</p>";
+    }
+}
 ?>
+
+<?php 
+$dati = json_decode(file_get_contents('esercizio.json'), true);
+?>
+
+
 
 
 
@@ -76,8 +66,8 @@ $file="contatti.txt";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/file.min.css" type="text/css">
-  <link rel="stylesheet" href="./css/form.min.css" type="text/css">
+  <link rel="stylesheet" href="../css/file.min.css" type="text/css">
+  <link rel="stylesheet" href="../css/form.min.css" type="text/css">
   <link rel="icon" href="./immagini/leafdesign.png" type="image/x-icon">
   <title>Leafdesign</title>
 
@@ -86,25 +76,13 @@ $file="contatti.txt";
 
 <body>
 
-<header>
-  <nav class="hamburger-menu">
-    <!--HEADER-->
-    <input type="checkbox" id="checkbox-label">
-    <label for="checkbox-label" class="checkbox-controllo">
-    <span class="span-hamburger"></span>
-    </label>
+<?php require_once 'layout.php';
 
-    
-     
-    <img src="./immagini/leafdesign.png" class="logo" alt="leafdesign">
-    <ul id="menu">
-      <?php foreach($dati['menu'] as $item): ?>
-      <li><a href="<?php echo $item['link']; ?>" ><?php echo $item['nome']; ?></a></li>
-      <?php endforeach; ?>
-    </ul>
-  </nav>
-  </header>
-
+renderHeader(
+  $dati['menu'],
+  'Home'
+);
+?>
   <div class="contattaci"> <!--IMMAGINE CON SPAN-->
     <img src="./immagini/contattaci.jpg" alt="contattaci image"> 
     <span class="image-span"><?php echo $dati['titlepage']['titolo1']; ?></span>
@@ -112,30 +90,65 @@ $file="contatti.txt";
 
  <div class="background-form">
   
-  <form action="form.php" method="POST" class="animation-form"> <!--FORM-->
-    <div class="contact">
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="nome"  required>
+  <form action="form.php" method="POST" class="animation-form" novalidate>
 
-      <label for="surname">Cognome:</label>
-      <input type="text" id="surname" name="cognome"  required>
+  <div class="contact">
+    <label for="name">Nome:</label>
+    <input
+      type="text"
+      id="name"
+      name="nomi"
+      required
+      value="<?= htmlspecialchars($valori['nomi'] ?? '') ?>"
+      class="<?= isset($errori['nomi']) ? 'campo-errore' : '' ?>"
+    >
 
-      <label for="email">Email:</label>
-      <input type="text" id="email" name="e-mail" required>
+    <label for="surname">Cognome:</label>
+    <input
+      type="text"
+      id="surname"
+      name="cognome"
+      required
+      value="<?= htmlspecialchars($valori['cognome'] ?? '') ?>"
+      class="<?= isset($errori['cognome']) ? 'campo-errore' : '' ?>"
+    >
 
-      <label for="phone">Telefono:</label>
-      <input type="tel" id="phone" name="telefono" required>
-    </div>
-    
-    <div class="message">
-      <label for="message">Messaggio:</label>
-      <textarea id="message" name="messaggio" required ></textarea>
+    <label for="email">Email:</label>
+    <input
+      type="text"
+      id="email"
+      name="e-mail"
+      required
+      value="<?= htmlspecialchars($valori['email'] ?? '') ?>"
+      class="<?= isset($errori['email']) ? 'campo-errore' : '' ?>"
+    >
 
-      <button type="submit" class="green">Submit</button>
-      <button type="reset" class="red">Reset</button>
-    </div>
-  </form>
-  
+    <label for="phone">Telefono:</label>
+    <input
+      type="tel"
+      id="phone"
+      name="telefono"
+      required
+      value="<?= htmlspecialchars($valori['telefono'] ?? '') ?>"
+      class="<?= isset($errori['telefono']) ? 'campo-errore' : '' ?>"
+    >
+  </div>
+
+  <div class="message">
+    <label for="message">Messaggio:</label>
+    <textarea
+      id="message"
+      name="messaggio"
+      required
+      class="<?= isset($errori['messaggio']) ? 'campo-errore' : '' ?>"
+    ><?= htmlspecialchars($valori['messaggio'] ?? '') ?></textarea>
+
+    <button type="submit" class="green">Submit</button>
+    <button type="reset" class="red">Reset</button>
+  </div>
+
+</form>
+
 
 
   <!--MAPPA CON INDIRIZZO -->
@@ -155,31 +168,12 @@ $file="contatti.txt";
 
   </div>
     
-  <footer> <!--FOOTER-->
-    <div class="footer-content">
-      <img src="./immagini/leafdesign.png" class="logo-footer" alt="leafdesign">
-
-      <div class="info-section">
-        <h3 class="title">Contatti</h3>
-        <ul class="info">
-          <?php foreach($dati['info-footer'] as $contatto): ?>
-          <li><?php echo $contatto['nome']; ?>: <?php echo $contatto['valore']; ?></li>
-          <?php endforeach; ?>
-          
-        </ul>
-      </div>
-
-      <div class="social-section">
-        <h3 class="title">Social</h3>
-        <ul class="social">
-          <?php foreach($dati['social'] as $social): ?>
-          <li><a href="<?php echo $social['link']; ?>" target="_blank"><?php echo $social['nome']; ?></a></li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
-    </div>
-    <p>&copy; <?php echo $dati['footer']['testo']; ?></p>
-  </footer>
-
+  <?php
+renderFooter(
+  $dati['info-footer'],
+  $dati['social'],
+  $dati['footer']['testo']
+);
+?>
 </body>
 </html>

@@ -24,6 +24,7 @@
 
  .background-form {
      height: 1200px;
+     
  }
 
  label {
@@ -40,6 +41,8 @@
      width: 1600px;
      height: 400px;
      filter: opacity(40%);
+     position: relative;
+     bottom:30px;
  }
 
 
@@ -77,6 +80,15 @@
 
 
  }
+
+ input[type=text].campo-errore,
+ input[type=tel].campo-errore,
+ input[type=email].campo-errore,
+ input[type=textarea].campo-errore {
+  border: 2px solid #d60000;
+  background-color: #ffecec;
+}
+
 
  button[type=reset] {
      @include button-type('reset');
@@ -122,6 +134,10 @@
         @include span-form;
      }
 
+ input .campo-errore {
+  border: 2px solid #d60000;
+  background-color: #ffecec;
+}
 
 
     .contact {
@@ -220,6 +236,13 @@
      iframe {
          @include iframe-device;
      }
+
+
+     input .campo-errore {
+  border: 2px solid #d60000;
+  background-color: #ffecec;
+}
+
 
      button[type=submit] {
          @include button-type('submit');

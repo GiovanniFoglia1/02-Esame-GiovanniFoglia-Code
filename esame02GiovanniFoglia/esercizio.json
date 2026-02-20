@@ -51,8 +51,7 @@
   ],
   "titlepage": {
     "titolo1": "Contattaci",
-    "titolo2": "Titolo progetto",
-    "titolo3": "portfolio"
+    "titolo2": "portfolio"
   },
   "servizi": [
     {
@@ -99,21 +98,39 @@
   ],
    "paragrafi-card": [
     {
+      "id": 1,
+      "titolo": "Progetto 1",
+      "immagine": "./immagini/card.jpg",
       "testo": "Progettazione e sviluppo di siti web moderni, responsive e ottimizzati per i motori di ricerca."
     },
     {
+        "id": 2,
+        "titolo": "Progetto 2",
+        "immagine": "./immagini/card.jpg",
       "testo": "Creazione di identità visive uniche, loghi e materiali di branding per aziende e professionisti."
     },
     {
+      "id": 3,
+      "titolo": "Progetto 3",
+      "immagine": "./immagini/card.jpg",
       "testo": "Sviluppo di applicazioni web personalizzate per migliorare l'efficienza e l'esperienza utente."
     },
     {
+        "id": 4,
+        "titolo": "Progetto 4",
+        "immagine": "./immagini/card.jpg",
       "testo": "Consulenza strategica per la presenza online, marketing digitale e ottimizzazione delle conversioni."
     },
     {
+        "id": 5,
+        "titolo": "Progetto 5",
+        "immagine": "./immagini/card.jpg",
       "testo": "Supporto tecnico continuo e manutenzione per garantire che il tuo sito web sia sempre aggiornato e sicuro."
     },
     {
+        "id": 6,
+        "titolo": "Progetto 6",
+        "immagine": "./immagini/card.jpg",
       "testo": "Creazione di contenuti multimediali, tra cui fotografie, video e grafica, per arricchire la tua presenza online."
     }
   ]
