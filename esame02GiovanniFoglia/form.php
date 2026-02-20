@@ -14,6 +14,8 @@ function erroreCampo($campo, $errori) {
     return isset($errori[$campo]) ? 'campo-errore' : '';
 }
 
+if (isset($_POST['resetValue'])) 
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $valori['nomi'] = trim($_POST['nomi'] ?? '');
@@ -103,6 +105,10 @@ renderHeader(
       class="<?= isset($errori['nomi']) ? 'campo-errore' : '' ?>"
     >
 
+     <?php if (isset($errori['nomi'])): ?>
+      <span class="messaggio-errore"><?= $errori['nomi'] ?></span>
+    <?php endif; ?>
+
     <label for="surname">Cognome:</label>
     <input
       type="text"
@@ -112,6 +118,9 @@ renderHeader(
       value="<?= htmlspecialchars($valori['cognome'] ?? '') ?>"
       class="<?= isset($errori['cognome']) ? 'campo-errore' : '' ?>"
     >
+    <?php if (isset($errori['cognome'])): ?>
+      <span class="messaggio-errore"><?= $errori['cognome'] ?></span>
+    <?php endif; ?>
 
     <label for="email">Email:</label>
     <input
@@ -122,6 +131,9 @@ renderHeader(
       value="<?= htmlspecialchars($valori['email'] ?? '') ?>"
       class="<?= isset($errori['email']) ? 'campo-errore' : '' ?>"
     >
+    <?php if (isset($errori['email'])): ?>
+      <span class="messaggio-errore"><?= $errori['email'] ?></span>
+    <?php endif; ?>
 
     <label for="phone">Telefono:</label>
     <input
@@ -132,6 +144,9 @@ renderHeader(
       value="<?= htmlspecialchars($valori['telefono'] ?? '') ?>"
       class="<?= isset($errori['telefono']) ? 'campo-errore' : '' ?>"
     >
+    <?php if (isset($errori['telefono'])): ?>
+      <span class="messaggio-errore"><?= $errori['telefono'] ?></span>
+    <?php endif; ?>
   </div>
 
   <div class="message">
@@ -142,9 +157,12 @@ renderHeader(
       required
       class="<?= isset($errori['messaggio']) ? 'campo-errore' : '' ?>"
     ><?= htmlspecialchars($valori['messaggio'] ?? '') ?></textarea>
+    <?php if (isset($errori['messaggio'])): ?>
+      <span class="messaggio-errore"><?= $errori['messaggio'] ?></span>
+    <?php endif; ?>
 
     <button type="submit" class="green">Submit</button>
-    <button type="reset" class="red">Reset</button>
+    <button type="reset" name="resetValue" class="red">Reset</button>
   </div>
 
 </form>
@@ -168,12 +186,31 @@ renderHeader(
 
   </div>
     
-  <?php
-renderFooter(
-  $dati['info-footer'],
-  $dati['social'],
-  $dati['footer']['testo']
-);
-?>
+  <footer> <!--FOOTER-->
+    <div class="footer-content">
+      <img src="./immagini/leafdesign.png" class="logo-footer" alt="leafdesign">
+
+      <div class="info-section">
+        <h3 class="title">Contatti</h3>
+        <ul class="info">
+          <?php foreach($dati['info-footer'] as $contatto): ?>
+          <li><?php echo $contatto['nome']; ?>: <?php echo $contatto['valore']; ?></li>
+          <?php endforeach; ?>
+          
+        </ul>
+      </div>
+
+      <div class="social-section">
+        <h3 class="title">Social</h3>
+        <ul class="social">
+          <?php foreach($dati['social'] as $social): ?>
+          <li><a href="<?php echo $social['link']; ?>" target="_blank"><?php echo $social['nome']; ?></a></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    </div>
+    <p>&copy; <?php echo $dati['footer']['testo']; ?></p>
+  </footer>
+
 </body>
 </html>
