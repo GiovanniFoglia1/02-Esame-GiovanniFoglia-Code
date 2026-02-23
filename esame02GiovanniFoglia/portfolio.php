@@ -8,8 +8,8 @@ $dati = json_decode(file_get_contents('esercizio.json'), true);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/portfolio.min.css" type="text/css">
-  <link rel="stylesheet" href="../css/file.min.css" type="text/css">
+  <link rel="stylesheet" href="./css/portfolio.min.css" type="text/css">
+  <link rel="stylesheet" href="./css/file.min.css" type="text/css">
   <link rel="icon" href="./immagini/leafdesign.png" type="image/x-icon">
   <title>Leafdesign</title>
 
